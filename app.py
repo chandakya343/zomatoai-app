@@ -4,6 +4,16 @@ Personalized food recommendation system with memory management
 """
 
 import streamlit as st
+
+# Page configuration - MUST BE FIRST!
+st.set_page_config(
+    page_title="ZomatoAI Manager",
+    page_icon="🍔",
+    layout="wide",
+    initial_sidebar_state="collapsed"
+)
+
+# Now import everything else
 import os
 from datetime import datetime
 import json
@@ -12,17 +22,14 @@ from dotenv import load_dotenv
 import pandas as pd
 import logging
 
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-)
+# Configure logging AFTER page config
 logger = logging.getLogger(__name__)
 
 # Load environment variables from .env file (for local development)
 env_path = Path(__file__).parent / '.env'
 load_dotenv(dotenv_path=env_path)
 
+# Import modules AFTER page config
 from food_database import get_food_database
 from memory_system import MemorySystem, create_sample_user
 from agent_system import AgentSystem
@@ -36,15 +43,6 @@ def get_api_key():
     except:
         # Fall back to environment variable (for local development)
         return os.getenv("GEMINI_API_KEY")
-
-
-# Page configuration
-st.set_page_config(
-    page_title="ZomatoAI Manager",
-    page_icon="🍔",
-    layout="wide",
-    initial_sidebar_state="collapsed"
-)
 
 # Swiss Design Aesthetic CSS
 st.markdown("""

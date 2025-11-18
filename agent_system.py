@@ -9,19 +9,9 @@ from datetime import datetime
 from typing import Dict, Any, Tuple, Optional
 import re
 import os
-from pathlib import Path
-from dotenv import load_dotenv
 import logging
 
-# Load environment variables
-env_path = Path(__file__).parent / '.env'
-load_dotenv(dotenv_path=env_path)
-
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-)
+# Get logger (no basicConfig - let Streamlit handle it)
 logger = logging.getLogger(__name__)
 
 
