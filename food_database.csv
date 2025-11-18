@@ -1,0 +1,21 @@
+dish_id,dish_name,restaurant,cuisine,category,price,rating,dietary,spice_level,prep_time_mins,tags,description
+D001,Butter Chicken,Punjab Grill,North Indian,Main Course,380,4.5,Non-Vegetarian,Medium,25,"['Creamy', 'Popular', 'Rich']",Tender chicken in rich tomato-butter gravy
+D002,Paneer Tikka Masala,Punjab Grill,North Indian,Main Course,320,4.4,Vegetarian,Medium,20,"['Creamy', 'Popular', 'Protein-Rich']",Grilled cottage cheese in spiced tomato gravy
+D003,Margherita Pizza,Pizza Hub,Italian,Main Course,280,4.3,Vegetarian,None,18,"['Cheesy', 'Classic', 'Quick']",Classic pizza with mozzarella and basil
+D004,Chicken Biryani,Biryani Blues,Hyderabadi,Main Course,350,4.7,Non-Vegetarian,Medium,30,"['Aromatic', 'Filling', 'Traditional']",Fragrant basmati rice with tender chicken
+D005,Veg Hakka Noodles,Wok Express,Chinese,Main Course,180,4.2,Vegetarian,Medium,15,"['Quick', 'Light', 'Stir-Fried']",Stir-fried noodles with vegetables
+D006,Masala Dosa,South Spice,South Indian,Main Course,120,4.6,Vegetarian,Medium,20,"['Crispy', 'Traditional', 'Healthy']",Crispy rice crepe with spiced potato filling
+D007,Chicken Fried Rice,Wok Express,Chinese,Main Course,220,4.3,Non-Vegetarian,Low,15,"['Quick', 'Filling', 'Savory']",Stir-fried rice with chicken and vegetables
+D008,Chocolate Brownie,Dessert Dreams,Continental,Dessert,150,4.5,Vegetarian,None,10,"['Sweet', 'Chocolatey', 'Indulgent']",Rich chocolate brownie with ice cream
+D009,Caesar Salad,Healthy Bites,Continental,Appetizer,200,4.1,Non-Vegetarian,None,10,"['Healthy', 'Fresh', 'Light']",Crisp romaine with Caesar dressing and chicken
+D010,Gulab Jamun,Sweet Tooth,Indian,Dessert,80,4.4,Vegetarian,None,5,"['Sweet', 'Traditional', 'Popular']",Deep-fried milk balls in sugar syrup
+D011,Fish Curry,Coastal Kitchen,Coastal,Main Course,400,4.6,Non-Vegetarian,High,25,"['Spicy', 'Tangy', 'Traditional']",Fresh fish in coconut-based spicy curry
+D012,Veg Burger,Burger Town,American,Main Course,150,4.0,Vegetarian,Low,12,"['Quick', 'Filling', 'Casual']",Vegetable patty with fresh veggies and sauces
+D013,Chole Bhature,Punjabi Zaika,North Indian,Main Course,140,4.5,Vegetarian,Medium,20,"['Filling', 'Traditional', 'Popular']",Spicy chickpea curry with fried bread
+D014,Pad Thai,Thai Basil,Thai,Main Course,320,4.4,Non-Vegetarian,Medium,20,"['Tangy', 'Sweet', 'Exotic']",Stir-fried rice noodles with shrimp and peanuts
+D015,Idli Sambar,South Spice,South Indian,Main Course,100,4.5,Vegetarian,Low,15,"['Healthy', 'Light', 'Traditional']",Steamed rice cakes with lentil soup
+D016,Chicken Wings,Wings & Things,American,Appetizer,280,4.3,Non-Vegetarian,High,18,"['Spicy', 'Crispy', 'Popular']",Crispy chicken wings with hot sauce
+D017,Paneer Wrap,Quick Bites,Fusion,Main Course,160,4.2,Vegetarian,Medium,10,"['Quick', 'Filling', 'Portable']",Grilled paneer with veggies in wrap
+D018,Mutton Rogan Josh,Kashmir Kitchen,Kashmiri,Main Course,450,4.7,Non-Vegetarian,High,35,"['Rich', 'Aromatic', 'Premium']",Tender mutton in aromatic red curry
+D019,Mango Lassi,Lassi Corner,Indian,Beverage,80,4.6,Vegetarian,None,5,"['Refreshing', 'Sweet', 'Cooling']",Yogurt-based mango drink
+D020,Veg Thali,Rajdhani Thali,Rajasthani,Main Course,300,4.6,Vegetarian,Medium,25,"['Complete Meal', 'Variety', 'Traditional']","Complete meal with dal, vegetables, roti, rice, dessert"
