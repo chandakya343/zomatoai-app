@@ -19,13 +19,23 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-# Load environment variables from .env file
+# Load environment variables from .env file (for local development)
 env_path = Path(__file__).parent / '.env'
 load_dotenv(dotenv_path=env_path)
 
 from food_database import get_food_database
 from memory_system import MemorySystem, create_sample_user
 from agent_system import AgentSystem
+
+# Helper function to get API key (works both locally and on Streamlit Cloud)
+def get_api_key():
+    """Get API key from Streamlit secrets or environment variables"""
+    try:
+        # Try Streamlit secrets first (for cloud deployment)
+        return st.secrets["GEMINI_API_KEY"]
+    except:
+        # Fall back to environment variable (for local development)
+        return os.getenv("GEMINI_API_KEY")
 
 
 # Page configuration
@@ -106,7 +116,7 @@ st.markdown("""
     
     /* Swiss-style buttons */
     .stButton > button {
-        background-color: #000000;
+        background-color: #DC2626;
         color: #ffffff;
         border: none;
         padding: 0.75rem 2rem;
@@ -119,7 +129,7 @@ st.markdown("""
     }
     
     .stButton > button:hover {
-        background-color: #2a2a2a;
+        background-color: #B91C1C;
         box-shadow: 0 2px 8px rgba(0,0,0,0.15);
     }
     
@@ -134,7 +144,7 @@ st.markdown("""
     }
     
     .recommendation-card:hover {
-        border-color: #000;
+        border-color: #DC2626;
         box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
     
@@ -150,13 +160,13 @@ st.markdown("""
     }
     
     .dish-card:hover {
-        border-color: #000;
+        border-color: #DC2626;
         transform: translateY(-2px);
     }
     
     .dish-card.selected {
-        border-color: #000;
-        background-color: #f8f8f8;
+        border-color: #DC2626;
+        background-color: #fff5f5;
     }
     
     /* Metric cards */
@@ -206,11 +216,12 @@ def load_system():
         logger.info("🔧 Loading ZomatoAI system...")
         
         with st.spinner("Loading ZomatoAI system..."):
-            # Get API key from environment
-            api_key = os.getenv("GEMINI_API_KEY")
+            # Get API key (works both locally and on cloud)
+            api_key = get_api_key()
             if not api_key:
-                logger.error("❌ API key not found in environment")
-                st.error("⚠️ API key not found. Please configure GEMINI_API_KEY in .env file")
+                logger.error("❌ API key not found")
+                st.error("⚠️ API key not found. Please configure GEMINI_API_KEY")
+                st.info("**Local:** Add to .env file | **Cloud:** Add to Streamlit secrets")
                 st.stop()
             
             logger.info(f"✅ API key loaded: {api_key[:10]}...{api_key[-5:]}")

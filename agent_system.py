@@ -235,12 +235,17 @@ Analyze the query and decide if we need to search the food database."""
         logger.info("🤖 Sending to Query Handler Agent...")
         try:
             handler_response = self.query_handler.send_message(handler_input)
+            # Validate response
+            if handler_response is None or not hasattr(handler_response, 'text'):
+                logger.error("❌ API returned invalid response")
+                return "Sorry, I couldn't process your query. Please try again.", debug_info
+            
             handler_text = handler_response.text
             logger.info("✅ Query Handler Response:")
             logger.info(f"   {handler_text[:200]}...")
         except Exception as e:
             logger.error(f"❌ Query Handler Error: {e}")
-            raise
+            return f"Sorry, an error occurred: {str(e)}", debug_info
         
         debug_info["handler_response"] = handler_text
         
@@ -290,13 +295,18 @@ User Memory Context:
         
         try:
             final_response = self.recommendation_agent.send_message(recommendation_input)
+            # Validate response
+            if final_response is None or not hasattr(final_response, 'text'):
+                logger.error("❌ API returned invalid response")
+                return "Sorry, I couldn't generate recommendations at this moment. Please try again.", debug_info
+            
             final_text = final_response.text
             logger.info("✅ Recommendation Agent Response:")
             logger.info(f"   Response length: {len(final_text)} chars")
             logger.info(f"   First 200 chars: {final_text[:200]}...")
         except Exception as e:
             logger.error(f"❌ Recommendation Agent Error: {e}")
-            raise
+            return f"Sorry, an error occurred: {str(e)}", debug_info
         
         debug_info["final_response"] = final_text
         

@@ -23,23 +23,33 @@ class MemorySystem:
         
     def _load_memory(self) -> Dict[str, Any]:
         """Load user memory from file"""
-        if self.user_file.exists():
-            with open(self.user_file, 'r') as f:
-                return json.load(f)
-        else:
-            return {
-                "user_id": self.user_id,
-                "order_history": [],
-                "recent_feedbacks": [],  # Last 10 feedbacks in detail
-                "consolidated_feedback": "",  # Summary of older feedbacks
-                "preferences": {},
-                "created_at": datetime.now().isoformat()
-            }
+        try:
+            if self.user_file.exists():
+                with open(self.user_file, 'r') as f:
+                    return json.load(f)
+        except Exception as e:
+            print(f"Warning: Could not load memory file: {e}")
+        
+        # Return default memory structure
+        return {
+            "user_id": self.user_id,
+            "order_history": [],
+            "recent_feedbacks": [],  # Last 10 feedbacks in detail
+            "consolidated_feedback": "",  # Summary of older feedbacks
+            "preferences": {},
+            "created_at": datetime.now().isoformat()
+        }
     
     def _save_memory(self):
-        """Save memory to file"""
-        with open(self.user_file, 'w') as f:
-            json.dump(self.memory, f, indent=2)
+        """Save memory to file (with cloud-safe error handling)"""
+        try:
+            # Ensure directory exists
+            self.data_dir.mkdir(parents=True, exist_ok=True)
+            with open(self.user_file, 'w') as f:
+                json.dump(self.memory, f, indent=2)
+        except Exception as e:
+            print(f"Warning: Could not save memory file: {e}")
+            # Continue execution - don't crash the app
     
     def add_order(self, dish_id: str, dish_name: str, restaurant: str, 
                   price: float, timestamp: str = None):
